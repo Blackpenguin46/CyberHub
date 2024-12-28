@@ -6,60 +6,49 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import Link from 'next/link';
-import clsx from 'clsx'; // Import clsx
+import Link from "next/link";
+import clsx from "clsx";
 
-const resources = [
+const mainNavItems = [
   {
-    title: "Learning Paths",
-    href: "/learning-paths",
-    description: "Structured roadmaps for different cybersecurity career paths",
+    title: "Content",
+    items: [
+      {
+        title: "YouTube Creators",
+        href: "/youtube",
+        description: "Educational cybersecurity channels",
+      },
+      {
+        title: "CTF Platforms",
+        href: "/ctf",
+        description: "Capture The Flag competitions and platforms",
+      },
+      {
+        title: "Blogs & News",
+        href: "/blogs",
+        description: "Security news and analysis",
+      },
+    ],
   },
   {
-    title: "CTF Platforms",
-    href: "/ctf-platforms",
-    description: "Popular Capture The Flag platforms and upcoming competitions",
-  },
-  {
-    title: "Tools & Labs",
-    href: "/tools",
-    description: "Essential cybersecurity tools and virtual labs",
-  },
-];
-
-const community = [
-  {
-    title: "Discord Channels",
-    href: "/community/discord",
-    description: "Join active cybersecurity communities",
-  },
-  {
-    title: "YouTube Creators",
-    href: "/community/youtube",
-    description: "Top cybersecurity content creators and channels",
-  },
-  {
-    title: "Blogs & News",
-    href: "/community/blogs",
-    description: "Latest cybersecurity blogs, news, and updates",
-  },
-];
-
-const careers = [
-  {
-    title: "Job Board",
-    href: "/careers/jobs",
-    description: "Cybersecurity job listings and opportunities",
-  },
-  {
-    title: "Internships",
-    href: "/careers/internships",
-    description: "Find internships and entry-level positions",
-  },
-  {
-    title: "Education",
-    href: "/careers/education",
-    description: "College programs and certifications",
+    title: "Resources",
+    items: [
+      {
+        title: "Career Resources",
+        href: "/career",
+        description: "Career guidance and opportunities",
+      },
+      {
+        title: "Learning Roadmaps",
+        href: "/roadmaps",
+        description: "Structured learning paths",
+      },
+      {
+        title: "Tools & Software",
+        href: "/tools",
+        description: "Security tools and applications",
+      },
+    ],
   },
 ];
 
@@ -67,54 +56,24 @@ export function MainNav() {
   return (
     <NavigationMenu className="hidden md:flex">
       <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Resources</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {resources.map((resource) => (
-                <ListItem
-                  key={resource.title}
-                  title={resource.title}
-                  href={resource.href}
-                >
-                  {resource.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Community</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {community.map((item) => (
-                <ListItem
-                  key={item.title}
-                  title={item.title}
-                  href={item.href}
-                >
-                  {item.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger>Careers</NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
-              {careers.map((item) => (
-                <ListItem
-                  key={item.title}
-                  title={item.title}
-                  href={item.href}
-                >
-                  {item.description}
-                </ListItem>
-              ))}
-            </ul>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
+        {mainNavItems.map((section) => (
+          <NavigationMenuItem key={section.title}>
+            <NavigationMenuTrigger>{section.title}</NavigationMenuTrigger>
+            <NavigationMenuContent>
+              <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+                {section.items.map((item) => (
+                  <ListItem
+                    key={item.title}
+                    title={item.title}
+                    href={item.href}
+                  >
+                    {item.description}
+                  </ListItem>
+                ))}
+              </ul>
+            </NavigationMenuContent>
+          </NavigationMenuItem>
+        ))}
       </NavigationMenuList>
     </NavigationMenu>
   );
@@ -137,7 +96,7 @@ const ListItem = ({
       <NavigationMenuLink asChild>
         <Link
           href={href}
-          className={clsx( // Replace cn with clsx
+          className={clsx(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
           )}
@@ -152,4 +111,5 @@ const ListItem = ({
     </li>
   );
 };
+
 
