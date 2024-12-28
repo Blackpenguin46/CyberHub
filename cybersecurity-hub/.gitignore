@@ -59,4 +59,4 @@ logs
 pids
 *.pid
 *.seed
-*.pid.lock
+*.pid.lock.vscode/
