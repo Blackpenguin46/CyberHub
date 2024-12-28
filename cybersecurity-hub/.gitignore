@@ -37,3 +37,26 @@ next-env.d.ts
 
 # BFG Repo-Cleaner
 bfg.jar
+
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+*.lnk
+
+# Linux
+*~
+
+# Logs
+logs
+*.log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
