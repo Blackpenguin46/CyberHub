@@ -60,3 +60,4 @@ pids
 *.pid
 *.seed
 *.pid.lock.vscode/
+cybersecurity-hub/node_modules/
